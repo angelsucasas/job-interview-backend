@@ -61,6 +61,221 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+![image](https://user-images.githubusercontent.com/44983658/120091367-84e4fb00-c0d8-11eb-8e45-ccda3289f9b1.png)
+
+## API´s availables
+
+```bash
+  GET:http://localhost:3000/employee
+```
+Gets all employees in the DB
+
+----------------------------------------------------
+
+```bash
+  POST:http://localhost:3000/employee
+```
+Post data to create a employee in the DB. Format of the json:
+
+```bash
+{
+    "firstName":string;
+    "secondName":string;
+    "firstLastname":string;
+    "secondLastName":string;
+    "position":string;
+    "deparment":string;
+}
+```
+----------------------------------------------------
+```bash
+  DELETE:http://localhost:3000/employee
+```
+
+Deletes a employee from the DB with the specify ID
+```bash
+  {
+    id:number
+  }
+```
+
+----------------------------------------------------
+```bash
+  GET:http://localhost:3000/employee/supervisor
+```
+gets all employees that are supervisor of another employee
+
+--------------------
+```bash
+  POST:http://localhost:3000/employee/supervisor
+```
+Creates a new "Supervisor" (that is also a employee) to another employee. (see the MER [here](https://github.com/angelsucasas/job-interview-backend/blob/main/src/db/job-interview%20MER.png)). json format:
+
+
+```bash
+  {
+    employee:{
+      id:number
+    },
+    supervisor:{
+      id:number
+    }
+  }
+```
+
+--------------------
+
+```bash
+  DELETE:http://localhost:3000/employee/supervisor
+```
+Deletes a supervisor from a employee. json format:
+
+```bash
+  {
+    id:number
+  }
+```
+
+--------------------
+```bash
+  POST:http://localhost:3000/employee/account
+```
+Associates an Account with an employee.Json format:
+
+```bash
+  {
+    employee:{
+      id:number
+    },
+    account:{
+      id:number
+    }
+  }
+```
+
+--------------------
+```bash
+  GET:http://localhost:3000/employee/account
+```
+
+Gets all account associated to one employee (not all accounts need to have a employee as owner)
+
+--------------------
+
+```bash
+  GET:http://localhost:3000/account
+```
+
+get all accounts in the DB
+
+--------------------
+
+```bash
+  POST:http://localhost:3000/account
+```
+
+Creates a new Account. json format:
+
+
+```bash
+  {
+    productNumber:string;
+    currentAmount:number;
+  }
+```
+
+--------------------
+```bash
+  DELETE:http://localhost:3000/account
+```
+Deletes a account with the specify ID. json format;
+```bash
+  {
+    id:number
+  }
+```
+
+--------------------
+
+```bash
+  GET:http://localhost:3000/invoice
+```
+ gets all invoices in the db (invoices are a combination of varios "transactions" made by one "employee" with an specific "account". (see the MER [here](https://github.com/angelsucasas/job-interview-backend/blob/main/src/db/job-interview%20MER.png))
+ 
+ --------------------
+ 
+```bash
+  POST:http://localhost:3000/invoice
+```
+
+creates a new invoice. json format:
+
+```bash
+{
+    concept:string;
+    aprovedBy:string;
+    sign:string;
+    startDate:Date;
+    endDate:Date;
+}
+```
+
+--------------------
+
+```bash
+  DELETE:http://localhost:3000/invoice
+```
+
+deletes a invoice with the specify id. json format:
+
+```bash
+  {
+    id:number
+  }
+```
+
+--------------------
+
+```bash
+  GET:http://localhost:3000/transaction
+```
+gets all transactions of all accounst in the DB.
+
+--------------------
+
+```bash
+  POST:http://localhost:3000/transaction
+```
+
+Creates a new transaction. json format:
+
+```bash
+  {
+    amount:string;
+    description:string;
+    sign:string;
+    originAccount:{
+        id:number;
+    };
+    destinyAccount:{
+        id:number;
+    };
+  }
+```
+
+--------------------
+
+```bash
+  DELETE:http://localhost:3000/transaction
+```
+Deletes a transaction with the specify id. json format:
+
+
+```bash
+{
+  id:number
+}
+```
 
 ## License
 
