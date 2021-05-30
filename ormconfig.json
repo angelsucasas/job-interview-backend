@@ -1,0 +1,19 @@
+{
+   "type": "postgres",
+   "host": "localhost",
+   "port": 5432,
+   "username": "sucasas",
+   "password": "kotonoha??123",
+   "database": "test2",
+   "entities": ["dist/**/**.entity{.ts,.js}"],
+   "migrations": [
+      "src/migration/**/*.ts"
+   ],
+   "subscribers": [
+      "src/subscriber/**/*.ts"
+   ],
+   "synchronize": true,
+   "cli":{
+      "migrationsDir":"./"
+   }
+ }
